@@ -1,0 +1,33 @@
+import "./styles/theme.css";
+import "./styles/global.css";
+import { ProductList } from "./components/ProductList";
+import { Header } from "./components/MyHeader";
+import { Route, Routes } from "react-router";
+import { Cart } from "./components/Cart";
+import { CartProvider } from "./context/CartContext";
+import { SessionProvider } from "./context/SessionContext";
+import { Login } from "./components/Login";
+import { ToastContainer } from "react-toastify";
+import { User } from "./components/User";
+import { About } from "./components/About";
+
+export default function App() {
+  return (
+    <>
+      <ToastContainer />
+      <SessionProvider>
+        <CartProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/signin" element={<Login value="signin" />} />
+            <Route path="/register" element={<Login value="register" />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </CartProvider>
+      </SessionProvider>
+    </>
+  );
+}
