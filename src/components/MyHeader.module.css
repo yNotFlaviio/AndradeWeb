@@ -18,7 +18,7 @@
 .rightSide {
   display: flex;
   align-items: center;
-  gap: 15px; /* Ajustado para caber tudo com os divisores */
+  gap: 15px;
 }
 
 .navLinks {
@@ -63,4 +63,21 @@
 
 .logoImage {
   height: 45px;
+}
+
+/* --- CORREÇÃO MOBILE --- */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
+  .navLinks {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .divider {
+    display: none; /* Remove divisores no celular para ganhar espaço */
+  }
 }
