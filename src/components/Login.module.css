@@ -1,38 +1,118 @@
 .container {
+  width: 100%;
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loginCard {
+  background-color: #8c52ff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 40px;
+  padding: 50px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5rem; /* Reduzido de 15rem */
-  gap: 2rem;
-  padding: 1.5rem;
-  width: 100%;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-.container h1 {
-  font-size: 2.5rem; /* Reduzido */
-  color: var(--primary);
+.topHeader {
+  background-color: #d9d9d9;
+  color: #111;
+  padding: 15px 60px;
+  border-radius: 50px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  font-size: 1.4rem;
+  text-align: center;
+  width: fit-content;
 }
 
 .form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 25px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: white;
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-left: 10px;
+}
+
+.inputWrapper {
+  position: relative;
   width: 100%;
-  max-width: 350px; /* Limitado para mobile */
-  padding: 2rem;
-  background: var(--background);
-  border-radius: 1rem;
-  box-shadow: 0 0 1rem 0.25rem var(--primary);
 }
 
 .input {
   width: 100%;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  box-sizing: border-box; /* Importante para o padding não estourar a largura */
+  padding: 18px 25px;
+  font-size: 1.2rem;
+  border-radius: 50px; /* Bem arredondado como no protótipo */
+  border: none;
+  outline: none;
+  background-color: white;
 }
 
-.button {
-  font-size: 1.5rem;
-  padding: 0.8rem;
+.iconBtn {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8c52ff;
+  cursor: pointer;
+}
+
+.toggleMode {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 900;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: -10px;
+}
+
+.submitBtn {
+  background-color: white;
+  color: #111;
+  padding: 20px;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.4rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s ease;
+}
+
+.submitBtn:hover {
+  transform: scale(1.03);
+  background-color: #f0f0f0;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 550px) {
+  .loginCard {
+    padding: 30px 20px;
+  }
+  .topHeader {
+    font-size: 1.1rem;
+    padding: 12px 30px;
+  }
 }

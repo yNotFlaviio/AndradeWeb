@@ -138,3 +138,36 @@
       display: inline;
   }
 }
+/* Container para o ícone e o badge */
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* A bolinha com a quantidade */
+.badge {
+  position: absolute;
+  top: -8px;      /* Move para cima do ícone */
+  right: -8px;    /* Move para a direita do ícone */
+  background-color: #ff4d4d; /* Cor de destaque (vermelho/laranja) */
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #8c52ff; /* Borda da cor do header para parecer vazado */
+}
+
+/* Se quiser que no mobile a bolinha seja maior ou diferente */
+@media (max-width: 850px) {
+  .badge {
+    top: -5px;
+    right: -5px;
+  }
+}

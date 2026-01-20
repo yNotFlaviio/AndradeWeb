@@ -9,7 +9,6 @@ import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router";
 
 export function Login({ value }) {
-  // Contexto do Usuário
   const {
     handleSignIn,
     handleSignUp,
@@ -46,26 +45,16 @@ export function Login({ value }) {
       toast.success(sessionMessage, {
         position: "top-center",
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        progress: undefined,
-        style: { fontSize: "1.5rem" },
+        style: { fontSize: "1.2rem" },
         theme: localStorage.getItem("theme"),
         transition: Bounce,
       });
     } else if (sessionError) {
-      const isEmailNotConfirmed = sessionError === "Email not confirmed";
-      const message = isEmailNotConfirmed ? "E-mail não confirmado" : sessionError;
-      
-      toast[isEmailNotConfirmed ? "info" : "error"](message, {
+      const message = sessionError === "Email not confirmed" ? "E-mail não confirmado" : sessionError;
+      toast.error(message, {
         position: "top-center",
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        progress: undefined,
-        style: { fontSize: "1.5rem" },
+        style: { fontSize: "1.2rem" },
         theme: localStorage.getItem("theme"),
         transition: Bounce,
       });
@@ -76,15 +65,13 @@ export function Login({ value }) {
     e.preventDefault();
     const newErrors = {};
     
-    if (!formValues.email) newErrors.email = "E-mail é obrigatório";
-    if (!formValues.password) newErrors.password = "Senha é obrigatória";
+    if (!formValues.email) newErrors.email = "Obrigatório";
+    if (!formValues.password) newErrors.password = "Obrigatório";
     
     if (mode === "register") {
-      if (!formValues.username) newErrors.username = "Nome de usuário é obrigatório";
-      if (!formValues.confirmPassword)
-        newErrors.confirmPassword = "Confirmação de senha é obrigatória";
+      if (!formValues.username) newErrors.username = "Obrigatório";
       if (formValues.password !== formValues.confirmPassword)
-        newErrors.confirmPassword = "As senhas não coincidem";
+        newErrors.confirmPassword = "Senhas diferentes";
     }
     
     setErrors(newErrors);
@@ -95,151 +82,89 @@ export function Login({ value }) {
     } else {
       handleSignUp(formValues.email, formValues.password, formValues.username);
     }
-    
-    setFormValues({
-      email: "",
-      password: "",
-      confirmPassword: "",
-      username: "",
-    });
-    setErrors({});
-    setShowPassword(false);
   }
 
-  function handleInputChange(e) {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValues((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  const handleTogglePassword = () => setShowPassword((show) => !show);
+    setFormValues((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <div className={styles.container}>
-      <h1>{mode === "signin" ? "Entrar" : "Cadastrar"}</h1>
-      <Form
-        className={styles.form}
-        errors={errors}
-        onClearErrors={setErrors}
-        onSubmit={handleSubmit}
-      >
-        <Field.Root name="email" className={styles.field}>
-          <Field.Label className={styles.label}>E-mail</Field.Label>
-          <Field.Control
-            type="email"
-            name="email"
-            required
-            value={formValues.email}
-            onChange={handleInputChange}
-            placeholder="Digite seu e-mail"
-            className={styles.input}
-          />
-          <Field.Error className={styles.error} />
-        </Field.Root>
+      <div className={styles.loginCard}>
+        {/* CABEÇALHO CINZA IGUAL AO PROTÓTIPO */}
+        <div className={styles.topHeader}>
+          {mode === "signin" ? "TELA DE LOGIN" : "TELA DE CADASTRO"}
+        </div>
 
-        {mode === "register" && (
-          <Field.Root name="username" className={styles.field}>
-            <Field.Label className={styles.label}>Nome de Usuário</Field.Label>
+        <Form className={styles.form} errors={errors} onSubmit={handleSubmit}>
+          
+          <Field.Root name="email" className={styles.field}>
+            <Field.Label className={styles.label}>EMAIL:</Field.Label>
             <Field.Control
-              type="text"
-              name="username"
-              required
-              value={formValues.username}
+              type="email"
+              name="email"
+              value={formValues.email}
               onChange={handleInputChange}
-              placeholder="Digite seu nome de usuário"
               className={styles.input}
             />
-            <Field.Error className={styles.error} />
           </Field.Root>
-        )}
 
-        <Field.Root name="password" className={styles.field}>
-          <Field.Label className={styles.label}>Senha</Field.Label>
-          <div className={styles.inputWrapper}>
-            <Field.Control
-              type={showPassword ? "text" : "password"}
-              name="password"
-              required
-              value={formValues.password}
-              onChange={handleInputChange}
-              placeholder="Digite sua senha"
-              className={styles.input}
-            />
-            <button
-              type="button"
-              className={styles.iconBtn}
-              onClick={handleTogglePassword}
-              aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-              title={showPassword ? "Ocultar senha" : "Mostrar senha"}
-            >
-              {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-            </button>
-          </div>
-          <Field.Error className={styles.error} />
-        </Field.Root>
+          {mode === "register" && (
+            <Field.Root name="username" className={styles.field}>
+              <Field.Label className={styles.label}>NOME DE USUÁRIO:</Field.Label>
+              <Field.Control
+                type="text"
+                name="username"
+                value={formValues.username}
+                onChange={handleInputChange}
+                className={styles.input}
+              />
+            </Field.Root>
+          )}
 
-        {mode === "register" && (
-          <Field.Root name="confirmPassword" className={styles.field}>
-            <Field.Label className={styles.label}>Confirmar Senha</Field.Label>
+          <Field.Root name="password" className={styles.field}>
+            <Field.Label className={styles.label}>SENHA:</Field.Label>
             <div className={styles.inputWrapper}>
               <Field.Control
                 type={showPassword ? "text" : "password"}
-                name="confirmPassword"
-                required
-                value={formValues.confirmPassword}
+                name="password"
+                value={formValues.password}
                 onChange={handleInputChange}
-                placeholder="Confirme sua senha"
                 className={styles.input}
               />
               <button
                 type="button"
                 className={styles.iconBtn}
-                onClick={handleTogglePassword}
-                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-                title={showPassword ? "Ocultar senha" : "Mostrar senha"}
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                {showPassword ? <EyeOffIcon size={20}/> : <EyeIcon size={20}/>}
               </button>
             </div>
-            <Field.Error className={styles.error} />
           </Field.Root>
-        )}
 
-        <button
-          type="submit"
-          className={styles.button}
-          disabled={sessionLoading}
-        >
-          {sessionLoading ? (
-            <CircularProgress
-              size={24}
-              thickness={4}
-              sx={{
-                color: "var(--primary-contrast)",
-                marginLeft: "1rem",
-              }}
-            />
-          ) : mode === "signin" ? (
-            "Entrar"
-          ) : (
-            "Cadastrar"
+          {mode === "register" && (
+            <Field.Root name="confirmPassword" className={styles.field}>
+              <Field.Label className={styles.label}>CONFIRMAR SENHA:</Field.Label>
+              <Field.Control
+                type={showPassword ? "text" : "password"}
+                name="confirmPassword"
+                value={formValues.confirmPassword}
+                onChange={handleInputChange}
+                className={styles.input}
+              />
+            </Field.Root>
           )}
-        </button>
-      </Form>
 
-      {mode === "register" && (
-        <button onClick={() => setMode("signin")} className={styles.info}>
-          Já tem uma conta? Clique aqui!
-        </button>
-      )}
-      
-      {mode === "signin" && (
-        <button onClick={() => setMode("register")} className={styles.info}>
-          Não tem uma conta? Clique aqui!
-        </button>
-      )}
+          <button onClick={() => setMode(mode === "signin" ? "register" : "signin")} type="button" className={styles.toggleMode}>
+            {mode === "signin" ? "NÃO TEM CONTA? CADASTRE-SE" : "JÁ TEM CONTA? ENTRAR"}
+          </button>
+
+          <button type="submit" className={styles.submitBtn} disabled={sessionLoading}>
+            {sessionLoading ? <CircularProgress size={24} color="inherit" /> : (mode === "signin" ? "ENTRAR" : "CADASTRAR")}
+          </button>
+        </Form>
+      </div>
     </div>
   );
 }
