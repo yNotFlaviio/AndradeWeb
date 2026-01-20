@@ -52,7 +52,7 @@ export function About() {
         </div>
 
         <div className={styles.techStack}>
-          <span>React</span> • <span>Supabase</span> • <span>Docker</span>
+          <span>React</span> • <span>Supabase</span> • <span>Vercel</span>
         </div>
       </footer>
     </div>
