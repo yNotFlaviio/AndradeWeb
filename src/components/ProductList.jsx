@@ -1,14 +1,11 @@
-import styles from "./ProductList.module.css";
-import { CircularProgress } from "@mui/material";
-import { Product } from "./Product";
 import { useState, useContext, useEffect, useRef } from "react";
 import { CartContext } from "../context/CartContext";
+import { Product } from "./Product";
+import styles from "./ProductList.module.css";
 
 export function ProductList() {
   const { products, loading, error } = useContext(CartContext);
-
   const [filteredProducts, setFilteredProducts] = useState([]);
-
   const searchInput = useRef(null);
 
   useEffect(() => {
@@ -29,40 +26,39 @@ export function ProductList() {
   }
 
   function handleClear() {
-    searchInput.current.value = "";
-    setFilteredProducts(products);
+    if (searchInput.current) {
+      searchInput.current.value = "";
+      setFilteredProducts(products);
+    }
   }
 
   return (
     <div className={styles.container}>
+      {/* Barra de Busca Estilo Pílula */}
       <div className={styles.searchContainer}>
-        <input
-          ref={searchInput}
-          type="text"
-          placeholder="Buscar produtos..."
-          className={styles.searchInput}
-          onChange={handleSearch}
-        />
-        <button className={styles.searchButton} onClick={handleClear}>
-          LIMPAR BUSCA
-        </button>
+        <div className={styles.searchWrapper}>
+          <input
+            ref={searchInput}
+            type="text"
+            placeholder="BUSCAR PRODUTOS..."
+            className={styles.searchInput}
+            onChange={handleSearch}
+          />
+          <button className={styles.searchButton} onClick={handleClear}>
+            LIMPAR
+          </button>
+        </div>
       </div>
+
+      {/* Grid de Produtos - 4 por linha */}
       <div className={styles.productList}>
         {filteredProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </div>
-      {loading && (
-        <div>
-          <CircularProgress
-            thickness={5}
-            style={{ margin: "2rem auto", display: "block" }}
-            sx={{ color: "#001111" }}
-          />
-          <p>Loading products...</p>
-        </div>
-      )}
-      {error && <p>❌ {error}</p>}
+
+      {loading && <p className={styles.status}>Carregando produtos...</p>}
+      {error && <p className={styles.status}>❌ {error}</p>}
     </div>
   );
 }

@@ -3,50 +3,87 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  margin: 15rem 0;
-  gap: 2rem;
-}
-
-.productList {
-  padding: 1rem 3rem;
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  grid-template-rows: repeat(auto-fit, min-content);
+  width: 100%;
 }
 
 .searchContainer {
+  width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 4rem;
+}
+
+/* O corpo da pílula roxa */
+.searchWrapper {
+  background-color: #8a5cf5;
+  display: flex;
   align-items: center;
-  gap: 2rem;
+  padding: 5px 15px;
+  border-radius: 50px;
   width: 100%;
+  max-width: 550px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .searchInput {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-  max-width: 60rem;
-  justify-content: center;
-  padding: 1rem;
-  font-size: 2rem;
-  border: 0.25rem solid var(--primary);
-  border-radius: 1rem;
+  background: transparent;
+  border: none;
+  flex: 1;
+  padding: 12px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
 }
 
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+/* Botão limpar com contorno branco dentro da pílula */
 .searchButton {
-  background-color: var(--primary);
-  color: var(--gray-900);
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 6px 20px;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 2rem;
-  font-weight: bold;
-  border: 0.25rem solid var(--gray-900);
+  font-weight: 800;
+  font-size: 0.7rem;
+  transition: all 0.2s;
 }
 
 .searchButton:hover {
-  background-color: var(--primary-dark);
+  background-color: white;
+  color: #8a5cf5;
+}
+
+/* Configuração para 4 colunas idênticas */
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 30px;
+  width: 100%;
+  max-width: 1250px;
+  padding: 0 20px;
+}
+
+.status {
+  margin-top: 2rem;
+  font-weight: bold;
+  color: #8a5cf5;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 1100px) {
+  .productList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .productList {
+    grid-template-columns: 1fr;
+  }
 }

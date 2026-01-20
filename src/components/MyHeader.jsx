@@ -1,19 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { User, ShoppingBasket } from "lucide-react";
+import { User, ShoppingCart } from "lucide-react"; 
 import { CartContext } from "../context/CartContext";
 import { SessionContext } from "../context/SessionContext";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "./ThemeToggle"; // Importando o componente funcional
 
 import styles from "./MyHeader.module.css";
 import logoImg from "../assets/imgs/image.png";
 
 export function Header() {
-  const { cart } = useContext(CartContext);
   const { session } = useContext(SessionContext);
-
-  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  const totalPrice = cart.reduce((total, prod) => total + prod.price * prod.quantity, 0).toFixed(2);
 
   return (
     <header className={styles.header}>
@@ -24,46 +20,50 @@ export function Header() {
           <img src={logoImg} alt="TECHHOME" className={styles.logoImage} />
         </Link>
 
-        {/* Lado Direito: Tudo alinhado horizontalmente */}
+        {/* Lado Direito */}
         <div className={styles.rightSide}>
           
           <nav className={styles.navLinks}>
+            <Link to="/games">LOJA DE GAMES</Link>
+            <Link to="/pecas">LOJA DE PEÇAS</Link>
             <Link to="/about">SOBRE NÓS</Link>
           </nav>
 
-          <div className={styles.themeContainer}>
-            <ThemeToggle />
-          </div>
+          <div className={styles.divider}></div>
 
-          <Link to="/cart" className={styles.cartSection}>
-            <div className={styles.cartIconWrapper}>
-              <ShoppingBasket size={28} />
-              {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
+          {/* Carrinho */}
+          <Link to="/cart" className={styles.actionItem}>
+            <ShoppingCart size={24} strokeWidth={2.5} />
+            <div className={styles.actionText}>
+              <span>CARRINHO</span>
+              <span>DE COMPRAS</span>
             </div>
-            <span className={styles.cartTotal}>R$ {totalPrice}</span>
           </Link>
 
-          <div className={styles.authGroup}>
-            <div className={styles.divider}></div>
-            <User size={32} className={styles.userIcon} />
-            <div className={styles.authText}>
+          <div className={styles.divider}></div>
+
+          {/* Login */}
+          <Link to={session ? "/user" : "/signin"} className={styles.actionItem}>
+            <User size={24} strokeWidth={2.5} />
+            <div className={styles.actionText}>
               {!session ? (
                 <>
-                  <div className={styles.loginRow}>
-                    <Link to="/signin" className={styles.link}>ENTRE</Link>
-                    <span className={styles.separator}>OU</span>
-                  </div>
-                  <Link to="/register" className={styles.link}>
-                    <strong>CADASTRE-SE</strong>
-                  </Link>
+                  <span>ENTRE OU</span>
+                  <span>CADASTRE-SE</span>
                 </>
               ) : (
-                <Link to="/user" className={styles.link}>
-                  Olá, {session.user.user_metadata.username}
-                </Link>
+                <>
+                  <span>OLÁ,</span>
+                  <span>{session.user.user_metadata.username.toUpperCase()}</span>
+                </>
               )}
             </div>
-          </div>
+          </Link>
+
+          <div className={styles.divider}></div>
+
+          {/* TEMA (Agora usando o componente funcional) */}
+          <ThemeToggle />
 
         </div>
       </div>
