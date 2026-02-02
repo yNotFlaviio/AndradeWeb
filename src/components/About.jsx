@@ -1,58 +1,88 @@
 import styles from "./About.module.css";
-import { Laptop, ShieldCheck, Truck, Clock, Award } from "lucide-react";
+import { Monitor, ShieldCheck, Zap } from "lucide-react";
 
 export function About() {
   return (
     <div className={styles.container}>
       {/* Banner Principal */}
       <section className={styles.hero}>
-        <h1>TechHome</h1>
-        <p>Sua casa tecnológica: Inovação e performance ao seu alcance.</p>
+        <h1>Andrade <span className={styles.neonText}>Web Studios</span></h1>
+        
+        <p className={styles.tagline}>Sua presença digital começa aqui.</p>
+
+        <div className={styles.description}>
+          <p>
+            Somos especializados na criação de sites profissionais para empresas e autônomos, 
+            com foco em design moderno, alto desempenho e facilidade de contato com o cliente final. 
+            Desenvolvemos soluções digitais pensadas para transmitir credibilidade, fortalecer marcas 
+            e transformar visitantes em oportunidades reais de negócio.
+          </p>
+
+          <p>
+            Criada no final de 2025, a <strong>Andrade Web Studios</strong> nasceu com o objetivo 
+            de simplificar a presença digital de negócios que desejam crescer e se destacar na internet, 
+            oferecendo sites claros, funcionais e estrategicamente planejados para cada necessidade.
+          </p>
+
+          <p className={styles.highlight}>
+            A marca é idealizada e desenvolvida por <strong>Antônio Flávio</strong>, profissional da área de tecnologia, 
+            que atua diretamente em todas as etapas do projeto — do planejamento ao desenvolvimento final — 
+            garantindo atenção aos detalhes, comunicação transparente e soluções alinhadas aos objetivos de cada cliente.
+          </p>
+
+          <p>
+            Nosso compromisso é entregar sites modernos, eficientes e acessíveis, ajudando empresas 
+            e profissionais a se posicionarem melhor no ambiente digital e alcançarem novos clientes 
+            de forma profissional e segura.
+          </p>
+        </div>
       </section>
 
-      {/* Diferenciais da Loja */}
+      {/* Diferenciais - Cards com Animação */}
       <section className={styles.features}>
         <div className={styles.featureCard}>
-          <Laptop size={40} />
-          <h3>Curadoria Especializada</h3>
-          <p>Selecionamos apenas os melhores laptops do mercado, de ultrabooks a máquinas gamers de alta performance.</p>
+          <div className={styles.iconBox}>
+            <Monitor size={32} />
+          </div>
+          <h3>Soluções Inteligentes</h3>
+          <p>Sites institucionais modernos, responsivos e objetivos, pensados para todos os dispositivos.</p>
         </div>
+
         <div className={styles.featureCard}>
-          <ShieldCheck size={40} />
-          <h3>Segurança Total</h3>
-          <p>Garantia de procedência em todos os produtos e pagamentos 100% protegidos.</p>
+          <div className={styles.iconBox}>
+            <ShieldCheck size={32} />
+          </div>
+          <h3>Confiabilidade</h3>
+          <p>Sites rápidos, seguros e estáveis, oferecendo uma experiência profissional e robusta.</p>
         </div>
+
         <div className={styles.featureCard}>
-          <Truck size={40} />
-          <h3>Entrega Ágil</h3>
-          <p>Logística inteligente para garantir que sua nova ferramenta de trabalho chegue rápido até você.</p>
+          <div className={styles.iconBox}>
+            <Zap size={32} />
+          </div>
+          <h3>Foco em Resultados</h3>
+          <p>Projetos criados para gerar credibilidade e contatos, com integração direta ao WhatsApp.</p>
         </div>
       </section>
 
-      {/* Texto Institucional */}
+      {/* Nossa Missão */}
       <section className={styles.content}>
-        <h2>Nossa Missão</h2>
+        <h2>Nossa <span className={styles.neonText}>Missão</span></h2>
         <p>
-          A <strong>TechHome</strong> nasceu com o objetivo de simplificar a busca pelo computador ideal. 
-          Acreditamos que a tecnologia deve ser acessível e descomplicada, por isso oferecemos uma 
-          interface intuitiva onde você encontra tudo o que precisa em um só lugar.
+          Facilitar o acesso ao digital por meio do desenvolvimento de sites simples, eficientes e estratégicos, 
+          ajudando empresas e profissionais a fortalecerem sua presença online, transmitirem credibilidade 
+          e alcançarem novos clientes de forma clara, moderna e funcional.
         </p>
       </section>
 
-      {/* Rodapé Técnico / Equipe (Menor e mais discreto) */}
+      {/* Rodapé */}
       <footer className={styles.footerCredits}>
         <div className={styles.academicInfo}>
-          <h4>Projeto IFRN Campus Macau</h4>
-          <p>Desenvolvido para as disciplinas de PPI, FSOeSOR e PDS.</p>
+          <h4>© 2025 – Andrade Web Studios</h4>
         </div>
         
-        <div className={styles.teamList}>
-          <p><strong>Desenvolvimento:</strong> Luan Fernandes & Antônio Flávio</p>
-          <p><strong>Colaboradores:</strong> Adeilton Borges, Caio Gabriel & Gabriel Fernandes</p>
-        </div>
-
         <div className={styles.techStack}>
-          <span>React</span> • <span>Supabase</span> • <span>Vercel</span>
+          <span>React</span> • <span>Vercel</span>
         </div>
       </footer>
     </div>

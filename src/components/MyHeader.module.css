@@ -1,173 +1,131 @@
 .header {
-  background-color: #8c52ff;
+  background-color: #05060e; /* Fundo escuro igual ao design */
   width: 100%;
-  padding: 15px 0;
-  color: white;
-  font-family: 'Inter', sans-serif;
   position: relative;
-  z-index: 1000;
+  padding-top: 15px;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 5% 15px 5%; /* Espaçamento para a logo não colar no canto */
+}
+
+.logoImage {
+  height: 40px; /* Ajuste conforme sua logo */
+  display: block;
 }
 
 .rightSide {
   display: flex;
   align-items: center;
-  gap: 15px;
-}
-
-.navLinks {
-  display: flex;
   gap: 20px;
 }
 
-.navLinks a {
-  color: white;
+/* Links e Itens de Ação */
+.navLink, .actionItem {
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 800; /* Fonte bem pesada como na imagem */
   font-size: 13px;
-  text-transform: uppercase;
-}
-
-.divider {
-  width: 2px;
-  height: 30px;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.actionItem {
+  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   gap: 8px;
-  color: white;
-  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLink:hover, .actionItem:hover {
+  color: #00FF00;
 }
 
 .actionText {
   display: flex;
   flex-direction: column;
-  line-height: 1;
+  line-height: 1.1;
 }
 
-.actionText span {
+/* Divisores Verticais Verdes */
+.divider {
+  width: 2px;
+  height: 25px;
+  background-color: #00FF00;
+}
+
+/* Carrinho e Badge */
+.iconWrapper {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #00FF00;
+  color: #000;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* Linha Neon Inferior */
+.bottomLine {
+  width: 92%; /* Não encosta nas bordas, igual à imagem */
+  height: 2px;
+  background-color: #00FF00;
+  margin: 0 auto;
+  box-shadow: 0px 0px 8px rgba(0, 255, 0, 0.4);
+}
+
+/* Tema */
+.themeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.themeLabel {
+  color: #fff;
+  font-size: 11px;
   font-weight: 800;
-  font-size: 12px;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
-.logoImage {
-  height: 45px;
-}
-
+/* Responsividade Mobile */
 .mobileMenuButton {
   display: none;
   background: none;
   border: none;
-  color: white;
+  color: #00FF00;
   cursor: pointer;
 }
 
-.themeWrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.themeLabel {
-    display: none; /* Só aparece no menu mobile */
-    font-weight: 800;
-    font-size: 12px;
-}
-
-/* --- NOVA CORREÇÃO MOBILE (MENU HAMBÚRGUER) --- */
-@media (max-width: 850px) {
+@media (max-width: 768px) {
   .mobileMenuButton {
     display: block;
   }
 
-  .divider {
-    display: none;
-  }
-
   .rightSide {
-    display: none; /* Esconde o menu por padrão */
+    display: none; /* Esconde o menu no mobile por padrão */
     flex-direction: column;
     position: absolute;
-    top: 100%; /* Aparece logo abaixo do header */
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: #8c52ff;
-    padding: 30px;
-    gap: 25px;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-    box-sizing: border-box;
+    background-color: #05070a;
+    padding: 20px;
+    z-index: 100;
   }
 
   .rightSide.menuOpen {
-    display: flex; /* Abre o menu quando clicado */
+    display: flex;
   }
 
-  .navLinks {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .navLinks a {
-    font-size: 18px;
-    width: 100%;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .actionItem {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 10px 0;
-  }
-
-  .themeLabel {
-      display: inline;
-  }
-}
-/* Container para o ícone e o badge */
-.iconWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* A bolinha com a quantidade */
-.badge {
-  position: absolute;
-  top: -8px;      /* Move para cima do ícone */
-  right: -8px;    /* Move para a direita do ícone */
-  background-color: #ff4d4d; /* Cor de destaque (vermelho/laranja) */
-  color: white;
-  font-size: 10px;
-  font-weight: bold;
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #8c52ff; /* Borda da cor do header para parecer vazado */
-}
-
-/* Se quiser que no mobile a bolinha seja maior ou diferente */
-@media (max-width: 850px) {
-  .badge {
-    top: -5px;
-    right: -5px;
+  .divider {
+    width: 80%;
+    height: 1px; /* No mobile o divisor vira horizontal */
   }
 }

@@ -1,8 +1,8 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
-  color: var(--text);
+  padding: 6rem 2rem;
+  color: #ffffff;
 }
 
 .hero {
@@ -11,72 +11,118 @@
 }
 
 .hero h1 {
-  font-size: 4rem;
-  color: var(--primary);
+  font-size: 3.5rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
-.hero p {
-  font-size: 1.5rem;
-  opacity: 0.8;
+.neonText {
+  color: #00ff00;
+  text-shadow: 0 0 12px rgba(0, 255, 0, 0.6);
+}
+
+.tagline {
+  font-size: 1.6rem;
+  color: #00ff00;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.description {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.description p {
+  margin-bottom: 2rem;
+  font-size: 1.15rem;
+  opacity: 0.9;
+}
+
+.description strong {
+  color: #00ff00;
+}
+
+.highlight {
+  border-left: 2px solid #00ff00;
+  border-right: 2px solid #00ff00;
+  padding: 0 25px;
 }
 
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 6rem;
 }
 
 .featureCard {
   text-align: center;
-  padding: 2.5rem;
-  background: var(--bg-card);
-  border-radius: 1.5rem;
-  border: 1px solid var(--border);
-  transition: transform 0.3s;
+  padding: 3rem 2rem;
+  background: #0a0d12;
+  border-radius: 20px;
+  border: 1px solid #1a1f26;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .featureCard:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px);
+  border-color: #00ff00;
+  box-shadow: 0 10px 40px rgba(0, 255, 0, 0.2);
 }
 
-.featureCard svg {
-  color: var(--primary);
-  margin-bottom: 1.5rem;
+.iconBox {
+  background: rgba(0, 255, 0, 0.1);
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover .iconBox {
+  transform: rotate(10deg) scale(1.1);
+  background: #00ff00;
+  color: #000;
 }
 
 .featureCard h3 {
   margin-bottom: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
 
 .content {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto 6rem;
   text-align: center;
 }
 
 .content h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: var(--primary);
 }
 
 .footerCredits {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #1a1f26;
   padding-top: 3rem;
   text-align: center;
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
-
-.teamList {
-  margin: 1.5rem 0;
 }
 
 .techStack {
+  margin-top: 1rem;
   font-weight: bold;
-  color: var(--primary);
+  color: #00ff00;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
 }
