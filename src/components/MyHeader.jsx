@@ -14,19 +14,16 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         
-        {/* Lado Esquerdo: Logo */}
         <Link to="/" className={styles.logoContainer} onClick={() => setIsMenuOpen(false)}>
           <img src={logoImg} alt="ANDRADE WEB STUDIOS" className={styles.logoImage} />
         </Link>
 
-        {/* Botão Mobile */}
         <button className={styles.mobileMenuButton} onClick={toggleMenu}>
           {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
 
         <nav className={`${styles.rightSide} ${isMenuOpen ? styles.menuOpen : ""}`}>
           
-          {/* Quem Somos */}
           <Link to="/about" className={styles.actionItem} onClick={() => setIsMenuOpen(false)}>
             <div className={styles.iconWrapper}>
               <Info size={20} strokeWidth={2.5} />
@@ -38,7 +35,6 @@ export function Header() {
 
           <div className={styles.divider}></div>
 
-          {/* Serviços */}
           <Link to="/services" className={styles.actionItem} onClick={() => setIsMenuOpen(false)}>
             <div className={styles.iconWrapper}>
               <Layout size={20} strokeWidth={2.5} />
@@ -50,7 +46,6 @@ export function Header() {
 
           <div className={styles.divider}></div>
 
-          {/* Contato */}
           <Link to="/contact" className={styles.actionItem} onClick={() => setIsMenuOpen(false)}>
             <div className={styles.iconWrapper}>
               <MessageCircle size={20} strokeWidth={2.5} />
