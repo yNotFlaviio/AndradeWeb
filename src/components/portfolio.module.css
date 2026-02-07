@@ -1,0 +1,165 @@
+.pageWrapper {
+  background-color: #05060e; /* UNIFICADO COM A HOME */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolioSection {
+  padding: 100px 20px;
+  flex: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header da Página */
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.preTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #00ff00; 
+  text-transform: uppercase;
+  font-weight: 00;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.title span {
+  color: #00ff00; 
+}
+
+.subtitle {
+  color: #888;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Grid de Projetos */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #0d0f1a; /* LEVEMENTE MAIS CLARO PARA DAR PROFUNDIDADE */
+  border: 1px solid #1a1f26; 
+  padding: 40px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: #00ff00; 
+  box-shadow: 0 10px 40px rgba(0, 255, 0, 0.15);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.folderIcon {
+  color: #00ff00; 
+}
+
+.externalLink {
+  color: #555;
+  transition: color 0.3s;
+}
+
+.externalLink:hover {
+  color: #00ff00; 
+}
+
+.projectName {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.projectDescription {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 1.0rem;
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+.tagCloud {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.tag {
+  background: #05060e; /* FUNDO DA TAG IGUAL AO SITE */
+  color: #00ff00; 
+  font-size: 1.0rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 50px;
+  border: 1px solid #1a1f26;
+}
+
+.visitButton {
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid #00ff00; 
+  color: #00ff00; 
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.visitButton:hover {
+  background: #00ff00; 
+  color: #000;
+}
+
+/* Rodapé */
+.portfolioFooter {
+  background: #03040a; /* QUASE PRETO TOTAL */
+  padding: 30px;
+  text-align: center;
+  border-top: 1px solid #1a1f26;
+}
+
+.portfolioFooter p {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.portfolioFooter strong {
+  color: #00ff00; 
+}

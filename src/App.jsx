@@ -6,7 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Header } from "./components/MyHeader";
 import { Home } from "./components/Home";
 import { About } from "./components/About";
-import { Service } from "./components/Service";
+import { Services } from "./components/Services";
+import { Portfolio } from "./components/Portfolio";
 import { Contact } from "./components/Contact";
 
 // Estilos
@@ -16,15 +17,16 @@ import "./styles/global.css";
 export default function App() {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer autoClose={3000} theme="dark" />
       <Header />
       <main> 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Service />} />
+          <Route path="/service" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </main>
     </>

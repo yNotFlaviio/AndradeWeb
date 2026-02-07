@@ -1,7 +1,7 @@
-import styles from "./Service.module.css";
+import styles from "./Services.module.css";
 import { Globe, Target, Briefcase, Store, Check, X, MessageCircle, ArrowRight, Cpu } from "lucide-react";
 
-export function Service() {
+export function Services() {
   return (
     <div className={styles.container}>
       {/* Cabeçalho da Página */}
