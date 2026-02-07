@@ -15,7 +15,6 @@ export function Contact() {
       </section>
 
       <div className={styles.contentGrid}>
-        {/* Lado Esquerdo: WhatsApp e Informações */}
         <div className={styles.infoSide}>
           <div className={styles.contactCard}>
             <div className={styles.iconHeader}>
