@@ -7,7 +7,6 @@ import qrCodeImg from "../assets/imgs/QRcode.png";
 export function Contact() {
   return (
     <div className={styles.container}>
-      {/* Cabeçalho */}
       <section className={styles.header}>
         <h1>Entre em <span className={styles.neonText}>Contato</span></h1>
         <p className={styles.intro}>
