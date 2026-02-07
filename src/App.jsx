@@ -11,6 +11,7 @@ import { Portfolio } from "./components/Portfolio";
 import { Contact } from "./components/Contact";
 
 // Estilos
+// Estilos
 import "./styles/theme.css";
 import "./styles/global.css";
 
